@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paathshala - Educational Institute</title>
+    <style>
+        .rogue {
+            background-image: url("project\ kalki.png");
+            background-repeat:no-repeat;
+            background-size: contain;
+            text-align: center;
+            padding: 20px;
+            background-position:bottom;
+            
+            height: 25vh; /* Set container height to viewport height */
+            padding-left: 20px; /* Add some padding to the left for spacing */
+            background-color: #f0f0f0;
+        }
+        body {
+            background-image: url("pexels-jess-bailey-designs-743986.jpg");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            transition: opacity 0.5s; /* Smooth transition effect */
+        }
+        label {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        /* Optional: Add some spacing between the form elements on smaller screens */
+        @media screen and (max-width: 480px) {
+            input[type="text"],
+            select {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="rogue"><h1> </h1></div>
+        <i><b><p>We offer classes for 1 to 8 in subjects like Maths, English, SST, and Science.</p></b></i>
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <label for="name">Student's Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="parent_contact">Parent's Contact Number:</label>
+            <input type="text" id="parent_contact" name="parent_contact" required><br><br>
+            <label for="class">Class:</label>
+            <select id="class" name="class" required>
+                <option value="">Select Class</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="2">3</option>
+                <option value="2">4</option>
+                <option value="2">5</option>
+                <option value="2">6</option>
+                <option value="2">7</option>
+                <option value="2">8</option>
+                <!-- ... options for classes 3 to 8 ... -->
+            </select><br><br>
+            <label>Subjects:</label>
+            <input type="checkbox" id="maths" name="subject" value="maths">
+            <label for="maths">Maths</label>
+            <input type="checkbox" id="english" name="subject" value="english">
+            <label for="english">English</label>
+            <input type="checkbox" id="sst" name="subject" value="sst">
+            <label for="sst">SST</label>
+            <input type="checkbox" id="science" name="subject" value="science">
+            <label for="science">Science</label><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        // Form validation
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const parentContact = document.getElementById('parent_contact').value;
+            const selectedClass = document.getElementById('class').value;
+            const subjects = document.querySelectorAll('input[name="subject"]:checked');
+
+            if (name.trim() === '') {
+                alert('Please enter the student\'s name.');
+                return false;
+            }
+
+            if (parentContact.trim() === '' || !/^\d{10}$/.test(parentContact)) {
+                alert('Please enter a valid 10-digit contact number for the parent.');
+                return false;
+            }
+
+            if (selectedClass === '') {
+                alert('Please select a class.');
+                return false;
+            }
+
+            if (subjects.length === 0) {
+                alert('Please select at least one subject.');
+                return false;
+            }
+
+            // If all validations pass, you can perform further actions here or submit the form
+            return true;
+        }
+    </script>
+</body>
+</html>
